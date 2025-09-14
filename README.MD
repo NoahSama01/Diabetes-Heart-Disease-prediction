@@ -58,7 +58,8 @@ Classifier ➝ Severity Level
 
 
 ## Output
-![Automated Retinal Imaging Web App](Screenshot 2025-09-15 011810.png)
+<img src="images/515eb559-67de-4345-b7ef-aacde217a261.png" alt="Automated Retinal Imaging Web App" width="600"/>
+
 
 
 🙏 Acknowledgements
