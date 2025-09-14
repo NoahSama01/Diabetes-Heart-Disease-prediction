@@ -57,8 +57,6 @@ Classifier ➝ Severity Level
    cd retinal-disease-diagnosis
 
 
-## Output
-<img src="images/515eb559-67de-4345-b7ef-aacde217a261.png" alt="Automated Retinal Imaging Web App" width="600"/>
 
 
 
