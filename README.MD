@@ -44,7 +44,7 @@ Classifier ➝ Severity Level
   - 0 - No DR  
   - 1 - Mild  
   - 2 - Moderate  
-  - 3 - Severe  
+  - 3-  Severe  
   - 4 - Proliferate DR
 
 ---
@@ -56,6 +56,9 @@ Classifier ➝ Severity Level
    git clone https://github.com/yourusername/retinal-disease-diagnosis.git
    cd retinal-disease-diagnosis
 
+
+## Output
+![Automated Retinal Imaging Web App](images/515eb559-67de-4345-b7ef-aacde217a261.png)
 
 
 🙏 Acknowledgements
