@@ -1,64 +1,82 @@
-# 🧠 Automated Retinal Imaging for Early Diagnosis of Diabetes, Cardiac, and Ocular Diseases using CNN-LSTM
+# Retinal Disease Diagnosis with Medical Captioning
 
-This project presents an AI-powered medical imaging system that automates early diagnosis of diabetic retinopathy, heart, and eye conditions using retinal fundus images. It uses a **hybrid CNN-LSTM architecture** to classify disease severity and generate **natural language diagnostic captions**.
-
----
-
-## 🔍 Key Features
-
-- 🧬 **DenseNet121 CNN** for retinal image feature extraction  
-- 🗣️ **LSTM + GloVe embeddings** for generating readable medical captions  
-- 📊 **BLEU Score Evaluation** for assessing the quality of generated text  
-- 🧪 **APTOS 2019 Kaggle Dataset** used for training and evaluation  
-- 🧠 Achieves up to **90% accuracy** in disease detection  
-- 🌐 **Flask-based web interface** for user-friendly access  
-- 🤖 **Gemini-powered chatbot** for real-time assistance
+An AI system that takes retinal fundus images as input and outputs both a disease severity grade and a natural language diagnostic caption. Built as a final-year project at GRIET with support from G-AIM Labs.
 
 ---
 
-## 🏗️ Architecture Overview
+## What it does
 
-Fundus Image ➝ DenseNet121 ➝ Feature Vectors ➝ LSTM ➝ Medical Caption
-↓
-Classifier ➝ Severity Level
-
-
----
-
-## 📁 Project Structure
-
-├── app.py # Flask server
-├── main.py / # Every aspect of backend
-├── index.html # Frontend interface
-├── static/ # CSS, JS, images
-└── README.md # This file
-
+Given a retinal fundus image, the system:
+1. Classifies diabetic retinopathy severity on the APTOS 0–4 scale (No DR → Proliferative DR)
+2. Generates a short medical caption describing the findings
+3. Serves both through a Flask web interface with a Gemini-powered chatbot for follow-up questions
 
 ---
 
-## 🧪 Dataset
+## Architecture
 
-- **Source**: [APTOS 2019 Blindness Detection (Kaggle)](https://www.kaggle.com/competitions/aptos2019-blindness-detection)
-- **Format**: 224x224 RGB retinal images
-- **Classes**:
-  - 0 - No DR  
-  - 1 - Mild  
-  - 2 - Moderate  
-  - 3-  Severe  
-  - 4 - Proliferate DR
+**Classification:** DenseNet121 (pretrained, fine-tuned on APTOS 2019) extracts feature vectors from 224×224 RGB fundus images. Final layers predict one of 5 DR severity grades.
+
+**Captioning:** Feature vectors from DenseNet121 feed into an LSTM decoder with GloVe word embeddings to generate diagnostic text. Caption quality is evaluated with BLEU score.
+
+```
+Fundus Image → DenseNet121 → Feature Vector → LSTM Decoder → Medical Caption
+                                    ↓
+                             FC Classifier → Severity Grade (0–4)
+```
 
 ---
 
-## 🚀 How to Run Locally
+## Dataset
 
-1. **Clone the repository**
-   ```bash
-   git clone https://github.com/yourusername/retinal-disease-diagnosis.git
-   cd retinal-disease-diagnosis
+**APTOS 2019 Blindness Detection** (Kaggle)  
+- 224×224 RGB retinal fundus images  
+- 5 classes: No DR (0), Mild (1), Moderate (2), Severe (3), Proliferative DR (4)  
+- Link: https://www.kaggle.com/competitions/aptos2019-blindness-detection
 
+---
 
+## Results
 
+| Metric | Value |
+|--------|-------|
+| Classification accuracy | 90% |
+| Caption evaluation | BLEU score |
 
+---
 
-🙏 Acknowledgements
-Special thanks to the G-AIM Labs and Department of AI & ML at GRIET for infrastructure and support.
+## Stack
+
+- Python, PyTorch
+- DenseNet121 (torchvision), LSTM, GloVe embeddings
+- Flask (web interface)
+- Google Gemini API (chatbot)
+- APTOS 2019 dataset
+
+---
+
+## Project structure
+
+```
+app.py          # Flask server and routes
+main.py         # Model inference and caption generation
+index.html      # Frontend
+static/         # CSS, JS, assets
+```
+
+---
+
+## Run locally
+
+```bash
+git clone https://github.com/NoahSama01/Diabetes-Heart-Disease-prediction.git
+cd Diabetes-Heart-Disease-prediction
+pip install -r requirements.txt
+python app.py
+```
+
+---
+
+## Acknowledgements
+
+G-AIM Labs and the Department of AI & ML at GRIET for compute resources and guidance.
